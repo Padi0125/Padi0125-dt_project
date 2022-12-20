@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <!-- pybo CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='main_css.css') }}">
+    <title>Hello, DT!</title>
+</head>
+<body>
+<!-- 네비게이션바 -->
+<header>
+    <div id="logo_s">
+        <a href="/"><img src="{{ url_for('static', filename='img/main_img2.png') }}" width="250" height="150"  alt="Logo"></a>
+    </div>
+        {% if g.user %}
+            <div id="user_sys_t">
+                <ul class="navbar-nav">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{ url_for('auth.logout') }}"><p>{{ g.user.username }}(로그아웃)</p></a>
+                    </li>
+                </ul>
+            </div>
+        {% else %}
+            <div id="user_sys_t">
+                <a href="{{ url_for('auth.login') }}">로그인</a> |
+                <a href="{{ url_for('auth.signup') }}">회원가입</a>
+            </div>
+        {% endif %}
+    <nav>
+        <hr/>
+        <ul>
+            <li><a href="/domestic/seoul/" target="_parent"> 국내 여행 </a></li>
+            <li><a href="/overseas/japan/" target="_parent"> 해외 여행 </a></li>
+            <li><a href="/video/play_video/" target="_parent"> 여행 영상 </a></li>
+            <li><a href="/product/product1/" target="_parent"> 여행 상품 </a></li>
+            <li><a href="/necessities/necessities_product/" target="_parent"> 여행 필수품 </a></li>
+            <li></li>
+        </ul>
+        <hr/>
+    </nav>
+</header>
+<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+{% block content %}
+{% endblock %}
+<!-- 기본 템플릿 안에 삽입될 내용 End -->
+<!-- 자바스크립트 Start -->
+{% block script %}
+{% endblock %}
+<!-- 자바스크립트 End -->
+</body>
+</html>

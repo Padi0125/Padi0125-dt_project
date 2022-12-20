@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>test_name_title</title>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='main_css.css') }}">
+</head>
+<body>
+    <div id="main_header">    <!--page -->
+        <header>
+            <div id="logo">
+                <a href="/"><img src="{{ url_for('static', filename='img/main_img2.png') }}" width="250" height="150"  alt="Logo"></a>
+            </div>
+            {% if g.user %}
+            <div id="user_sys">
+                <ul class="navbar-nav">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{ url_for('auth.logout') }}">{{ g.user.username }} (로그아웃)</a>
+                        <a href="/question/list/">고객 센터</a> |
+                        <a href="/item/my_item/">장바구니</a>
+                    </li>
+                </ul>
+            </div>
+            {% else %}
+            <div id="user_sys">
+                <a href="{{ url_for('auth.login') }}">로그인</a> |
+                <a href="{{ url_for('auth.signup') }}">회원가입</a> |
+                <a href="/question/list/">고객 센터</a> |
+                <a href="/item/my_item/">장바구니</a>
+            </div>
+            {% endif %}
+            <nav>
+                <hr/>
+                <ul>
+                    <li><a href="/domestic/seoul/" target="_parent"> 국내 여행 </a></li>
+                    <li><a href="/overseas/japan/" target="_parent"> 해외 여행 </a></li>
+                    <li><a href="/video/play_video/"> 여행 영상 </a></li>
+                    <li><a href="/product/product1/"> 여행 상품 </a></li>
+                    <li><a href="/necessities/necessities_product/" target="_parent"> 여행 필수품 </a></li>
+                    <li></li>
+                </ul>
+                <hr/>
+            </nav>
+        </header>
+        <div id="menu">
+            <ul>
+                <li><p>상품 id</p>
+                    {% for item in item_list %}
+                        {% if g.user.username == item.my_user %}
+                            <ul>
+                                <li><h5>{{ item.id }}</h5></li>
+                            </ul>
+                        {% endif %}
+                    {% endfor %}
+                </li>
+                <li><p>가격</p>
+                    {% for item in item_list %}
+                        {% if g.user.username == item.my_user %}
+                            <ul>
+                                <li><p>{{ item.price }}</p></li>
+                            </ul>
+                        {% endif %}
+                    {% endfor %}
+                </li>
+                <li><p>상품</p>
+                    {% for item in item_list %}
+                        {% if g.user.username == item.my_user %}
+                            <ul>
+                                <li><p>{{ item.itemname }}</p></li>
+                            </ul>
+                        {% endif %}
+                    {% endfor %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
+<!--        <h1>{{ g.user.username }} </h1>-->
+<!--            {% for item in item_list %}-->
+<!--                {% if g.user.username == item.my_user %}-->
+<!--                    <h2>{{ item.itemname }},{{ item.price }}</h2>-->
+<!--                {% else %}-->
+<!--                    <h2>해당 사항 없음</h2>-->
+<!--                {% endif %}-->
+<!--            {% endfor %}-->

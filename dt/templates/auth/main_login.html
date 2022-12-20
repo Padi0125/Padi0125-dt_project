@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+	<head>
+		<title>로그인</title>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='sali.css') }}">
+	</head>
+	<body>
+		<div class="main_s">
+			<form method="post">
+				{{ form.csrf_token }}
+        		{% include "form_errors.html" %}
+				<div class="main_login_cod">
+					<a href="/"><img src="{{ url_for('static', filename='img/main_img2.png') }}" width="250" height="150"  alt="Logo"></a>
+					<div class="main_login" name="logs">
+					<!-- 아이디, 비밀번호 입력 시작 -->
+						<input type="text" name="username" id="username" value="{{ form.username.data or '' }}" size="30" placeholder="아이디" class="login_acccount" required><br>
+						<input type="password" name="password" id="password" value="{{ form.password.data or '' }}" size="30" placeholder="비밀번호" class="login_acccount" required>
+						<!-- 아이디, 비밀번호 입력 종료 -->
+						<br>
+						<button id="login" class="login_acccount">로그인</button>
+					</div>
+					<a href="{{ url_for('auth.signup') }}" target='_blank'>회원 가입</a>
+				</div>
+			</form>
+		</div>
+	</body>
+{% endblock %}

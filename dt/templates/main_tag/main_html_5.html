@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>test_name_title</title>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='main_css.css') }}">
+</head>
+<body>
+    <div id="main_header">    <!--page -->
+        <header>
+            <div id="logo">
+                <a href="/"><img src="{{ url_for('static', filename='img/main_img2.png') }}" width="250" height="150"  alt="Logo"></a>
+            </div>
+            {% if g.user %}
+            <div id="user_sys">
+                <ul class="navbar-nav">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{ url_for('auth.logout') }}">{{ g.user.username }} (로그아웃)</a>
+                        <a href="/question/list/">고객 센터</a> |
+                        <a href="/item/my_item/">장바구니</a>
+                    </li>
+                </ul>
+            </div>
+            {% else %}
+            <div id="user_sys">
+                <a href="{{ url_for('auth.login') }}">로그인</a> |
+                <a href="{{ url_for('auth.signup') }}">회원가입</a> |
+                <a href="/question/list/">고객 센터</a> |
+                <a href="{{ url_for('auth.login') }}">장바구니</a>
+            </div>
+            {% endif %}
+            <nav>
+                <hr/>
+                <ul>
+                    <li><a href="/domestic/seoul/" target="_parent"> 국내 여행 </a></li>
+                    <li><a href="/overseas/japan/" target="_parent"> 해외 여행 </a></li>
+                    <li><a href="/video/play_video/"> 여행 영상 </a></li>
+                    <li><a href="/product/product1/"> 여행 상품 </a></li>
+                    <li><a href="/necessities/necessities_product/" target="_parent"> 여행 필수품 </a></li>
+                    <li></li>
+                </ul>
+                <hr/>
+            </nav>
+        </header>
+        <aside>
+            <form action="/items/item_save_1/" method="POST">
+                <div id="package1">
+                    <img src="{{ url_for('static', filename='img/ker.jpg') }}" width="200" height="180">
+                    <p>
+                        란체티 14032 28인치
+                        수화물 대형 여행용캐리어 여행가방 케리어
+                        <p/>
+                        가격 : 89,000
+                    </p>
+                    <button type="submit">상품 추가하기</button>
+                </div>
+            </form>
+            <form action="/items/item_save_2/" method="POST">
+                <div id="package2">
+                    <img src="{{ url_for('static', filename='img/protection.jpg') }}" width="200" height="180">
+                    <p>
+                        마일드 썬 프로텍션 40ml
+                        <p/>
+                        가격 : 28,000
+                    </p>
+                    <br><br>
+                    <button type="submit">상품 추가하기</button>
+                </div>
+            </form>
+            <form action="/items/item_save_3/" method="POST">
+                <div id="package3">
+                    <img src="{{ url_for('static', filename='img/first aid.jpg') }}" width="200" height="180">
+                    <p>
+                        여행용 응급 세트
+                        <p/>
+                        가격 : 60,000
+                    </p>
+                    <br><br>
+                    <button type="submit">상품 추가하기</button>
+                </div>
+            </form>
+            <form action="/items/item_save_4/" method="POST">
+                <div id="package4">
+                    <img src="{{ url_for('static', filename='img/bv.jpg') }}" width="200" height="180">
+                    <p>
+                        일회용 우비
+                        <p/>
+                        가격 : 20
+                    </p>
+                    <br><br>
+                    <button type="submit">상품 추가하기</button>
+                </div>
+            </form>
+        </aside>
+    </div>
+</body>
+</html>
+
+<!-- name={{g.user.username}}-->

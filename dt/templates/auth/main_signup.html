@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+	<head>
+		<title>회원가입</title>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='sali_signup.css') }}">
+
+	</head>
+    <body>
+		<div class="main_s">
+			<form method="post">
+				{{ form.csrf_token }}
+        		{% include "form_errors.html" %}
+				<div class="main_signup_cod">
+					<a href="/"><img src="{{ url_for('static', filename='img/main_img2.png') }}" width="250" height="150"  alt="Signup"></a>
+					<div class="main_signup" name="signup">
+					<!-- 아이디, 비밀번호 입력 시작 -->
+						<input type="text" name="username" id="username" value="{{ form.username.data or '' }}" size="30" placeholder="아이디" class="signup_acccount" required><br>
+						<input type="password" name="password1" id="password1" value="{{ form.password1.data or '' }}" size="30" placeholder="비밀번호" class="signup_acccount" required><br>
+                        <input type="password" name="password2" id="password2" value="{{ form.password2.data or '' }}" size="30" placeholder="비밀번호 재확인" class="signup_acccount" required>
+						<!-- 아이디, 비밀번호 입력 종료 -->
+						<br>
+                        <!-- 이메일 입력 시작 -->
+                        <input type="text" name="email" id="email" value="{{ form.email.data or '' }}" size="30" placeholder="이메일" class="signup_acccount" required>
+                        <!--이메일 입력 종료-->
+                        <br>
+						<button id="signup" class="signup_acccount">회원가입</button>
+					</div>
+					<a href="{{ url_for('auth.login') }}">로그인</a>
+				</div>
+			</form>
+		</div>
+	</body>
+{% endblock %}

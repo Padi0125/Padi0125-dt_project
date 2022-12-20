@@ -1,0 +1,33 @@
+*{margin: 0px; padding: 0px;}
+a{text-decoration: none;} /* 링크에 밑줄 같은거 제거*/
+
+.main_s {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.main_signup_cod {
+  border:1px solid gold;
+  background-color:white;
+	height: 700px;
+	width: 700px;
+  text-align : center;
+  padding : 100px 0;
+}
+#signup {
+  width: 38%;
+  background-color: skyblue;
+  border-color: transparent;
+  color: white;
+}
+.signup_acccount {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 100px;
+}
+
+.main_signup_cod a {
+  color:black;
+}
